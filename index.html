@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Expense Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <h1 class="header__title">💰 Daily Expense Tracker</h1>
+        <p class="header__subtitle">Catat dan kelola pengeluaran harianmu</p>
+      </header>
+
+      <!-- Total Card -->
+      <div class="total-card">
+        <p class="total-card__label">Total Pengeluaran</p>
+        <p class="total-card__amount" id="totalAmount">Rp 0</p>
+      </div>
+
+      <!-- Form -->
+      <section class="form-section">
+        <h2 class="section-title">Tambah Pengeluaran</h2>
+        <form id="expenseForm" class="form" novalidate>
+          <div class="form__row">
+            <div class="form__group">
+              <label class="form__label" for="expenseName">Nama Pengeluaran</label>
+              <input
+                class="form__input"
+                type="text"
+                id="expenseName"
+                placeholder="Contoh: Makan siang"
+                maxlength="100"
+              />
+              <span class="form__error" id="nameError"></span>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="expenseAmount">Jumlah (Rp)</label>
+              <input
+                class="form__input"
+                type="number"
+                id="expenseAmount"
+                placeholder="Contoh: 25000"
+                min="1"
+              />
+              <span class="form__error" id="amountError"></span>
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="form__group">
+              <label class="form__label" for="expenseCategory">Kategori</label>
+              <select class="form__input form__select" id="expenseCategory">
+                <option value="">-- Pilih Kategori --</option>
+                <option value="Makanan">🍽️ Makanan</option>
+                <option value="Transportasi">🚌 Transportasi</option>
+                <option value="Pendidikan">📚 Pendidikan</option>
+                <option value="Hiburan">🎮 Hiburan</option>
+                <option value="Belanja">🛍️ Belanja</option>
+                <option value="Lainnya">📦 Lainnya</option>
+              </select>
+              <span class="form__error" id="categoryError"></span>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="expenseDate">Tanggal</label>
+              <input class="form__input" type="date" id="expenseDate" />
+              <span class="form__error" id="dateError"></span>
+            </div>
+          </div>
+          <button type="submit" class="btn btn--primary" id="submitBtn">
+            + Tambah Pengeluaran
+          </button>
+        </form>
+      </section>
+
+      <!-- Expense List -->
+      <section class="list-section">
+        <h2 class="section-title">Daftar Pengeluaran</h2>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState">
+          <div class="empty-state__icon">📋</div>
+          <p class="empty-state__text">Belum ada pengeluaran yang dicatat.</p>
+          <p class="empty-state__hint">Tambahkan pengeluaran pertamamu di atas!</p>
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrapper" id="tableWrapper" style="display:none;">
+          <table class="table" id="expenseTable">
+            <thead>
+              <tr>
+                <th>Nama</th>
+                <th>Kategori</th>
+                <th>Tanggal</th>
+                <th>Jumlah</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="expenseTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
